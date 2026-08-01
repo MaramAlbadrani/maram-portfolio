@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Maram Faris Albadrani — Operations Support Specialist</title>
+<style>
+:root {
+  --bg: #060f1e;
+  --bg-2: #0a1a2f;
+  --surface: #0f2138;
+  --surface-2: #132943;
+  --ink: #e8eef8;
+  --muted: #8ea3bd;
+  --line: #1c3654;
+  --accent: #4fa8e0;
+  --accent-2: #7fd6e8;
+  --radius: 12px;
+  --maxw: 900px;
+  --font-body: "Inter", "Segoe UI", Tahoma, sans-serif;
+  --font-ar: "Tajawal", "Segoe UI", Tahoma, sans-serif;
+}
+* { box-sizing: border-box; }
+html, body {
+  margin: 0; padding: 0;
+  background: linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%);
+  color: var(--ink);
+  font-family: var(--font-body);
+  scroll-behavior: smooth;
+}
+html[lang="ar"] body { font-family: var(--font-ar); }
+body { position: relative; overflow-x: hidden; }
+
+#bg-network {
+  position: fixed; inset: 0;
+  width: 100%; height: 100%;
+  z-index: 0;
+  display: block;
+}
+.page { position: relative; z-index: 1; }
+
+header.nav {
+  position: sticky; top: 0; z-index: 10;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 18px 32px;
+  background: rgba(6, 15, 30, 0.72);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+.nav .brand { font-weight: 700; letter-spacing: 0.04em; color: var(--ink); }
+.nav ul { list-style: none; display: flex; gap: 22px; margin: 0; padding: 0; }
+.nav a { color: var(--muted); text-decoration: none; font-size: 0.92rem; }
+.nav a:hover { color: var(--accent-2); }
+
+#lang-toggle {
+  border: 1px solid var(--accent); background: transparent; color: var(--accent-2);
+  padding: 6px 14px; border-radius: 999px; font-size: 0.85rem; cursor: pointer; font-weight: 600;
+}
+#lang-toggle:hover { background: var(--accent); color: #06121f; }
+
+main { max-width: var(--maxw); margin: 0 auto; padding: 40px 24px 80px; }
+section { margin-bottom: 64px; }
+
+.eyebrow { font-size: 0.8rem; color: var(--accent-2); font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 6px; }
+h1 { font-size: 2.1rem; margin: 4px 0 18px; color: #fff; }
+h2 { font-size: 1.4rem; margin: 0 0 20px; color: #fff; }
+h3 { font-size: 1.1rem; margin: 0 0 4px; color: #fff; }
+p { line-height: 1.75; color: var(--muted); }
+
+.stats { display: flex; gap: 32px; margin: 26px 0 8px; flex-wrap: wrap; }
+.stat b { display: block; font-size: 1.6rem; color: var(--accent-2); }
+.stat span { font-size: 0.85rem; color: var(--muted); }
+
+.card {
+  background: linear-gradient(160deg, var(--surface) 0%, var(--surface-2) 100%);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 22px 24px; margin-bottom: 16px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+}
+.role { font-weight: 700; color: #fff; }
+.org { color: var(--accent-2); font-size: 0.95rem; }
+.dates { color: var(--muted); font-size: 0.82rem; margin-bottom: 10px; }
+
+ul.bullets { margin: 8px 0 0; padding-inline-start: 20px; }
+ul.bullets li { margin-bottom: 6px; line-height: 1.6; color: var(--muted); }
+
+.pill-row { display: flex; flex-wrap: wrap; gap: 10px; }
+.pill {
+  background: var(--surface-2); border: 1px solid var(--line); color: var(--ink);
+  padding: 7px 14px; border-radius: 999px; font-size: 0.85rem;
+}
+
+.project-link-card {
+  display: block; text-decoration: none; color: inherit;
+  background: linear-gradient(160deg, var(--surface) 0%, var(--surface-2) 100%);
+  border: 1px solid var(--line);
+  border-radius: var(--radius); overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  max-width: 420px;
+}
+.project-link-card:hover { transform: translateY(-3px); box-shadow: 0 14px 30px rgba(0,0,0,0.35); }
+.project-thumb { width: 100%; aspect-ratio: 16/10; display: block; object-fit: cover; background: var(--surface-2); }
+.project-link-card .project-caption { padding: 14px 16px; display: flex; align-items: center; justify-content: space-between; }
+.project-link-card .project-caption b { font-size: 1rem; color: #fff; }
+.project-link-card .project-caption span { color: var(--accent-2); font-size: 0.85rem; }
+
+.btn-visit {
+  display: inline-block; margin-top: 10px;
+  background: var(--accent); color: #06121f;
+  padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 0.9rem;
+}
+.btn-visit:hover { background: var(--accent-2); }
+
+footer.site-footer { text-align: center; color: var(--muted); font-size: 0.85rem; padding: 24px; border-top: 1px solid var(--line); }
+
+a { color: var(--accent-2); }
+
+html[dir="rtl"] .nav ul { direction: rtl; }
+
+@media (max-width: 600px) {
+  .nav ul { display: none; }
+  main { padding: 28px 18px 60px; }
+}
+</style>
+</head>
+<body>
+
+<canvas id="bg-network"></canvas>
+
+<div class="page">
+  <header class="nav">
+    <span class="brand">M. ALBADRANI</span>
+    <ul>
+      <li><a href="#about" data-i18n="nav_about">About</a></li>
+      <li><a href="#experience" data-i18n="nav_experience">Experience</a></li>
+      <li><a href="#skills" data-i18n="nav_skills">Skills</a></li>
+      <li><a href="#projects" data-i18n="nav_projects">Projects</a></li>
+      <li><a href="#education" data-i18n="nav_education">Education</a></li>
+      <li><a href="#contact" data-i18n="nav_contact">Contact</a></li>
+    </ul>
+    <button id="lang-toggle" data-i18n="lang_btn">العربية</button>
+  </header>
+
+  <main>
+    <section id="hero">
+      <h1 data-i18n="hero_hi">Hi, I'm Maram Faris Albadrani 👋</h1>
+      <a class="btn-visit" href="mailto:Maramalbadrani8@gmail.com" data-i18n="hero_contact_btn">Contact</a>
+      <div class="stats">
+        <div class="stat"><b data-i18n="stat1_num">1,000+</b><span data-i18n="stat1_label">Operational issues resolved</span></div>
+        <div class="stat"><b data-i18n="stat2_num">10+</b><span data-i18n="stat2_label">KPI dashboards maintained</span></div>
+        <div class="stat"><b data-i18n="stat3_num">100%</b><span data-i18n="stat3_label">Team quality improvement</span></div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="eyebrow">01</div>
+      <h2 data-i18n="sec_about">About</h2>
+      <p data-i18n="about_text">I'm an organized, tech-savvy operations professional...</p>
+    </section>
+
+    <section id="experience">
+      <div class="eyebrow">02</div>
+      <h2 data-i18n="sec_experience">Experience</h2>
+
+      <div class="card">
+        <div class="role" data-i18n="exp1_role">Operational Support Specialist</div>
+        <div class="org" data-i18n="exp1_org">Tamkeen Technologies</div>
+        <div class="dates" data-i18n="exp1_dates">Nov 2023 — Mar 2026</div>
+        <ul class="bullets">
+          <li data-i18n="exp1_b1">Ensured full compliance...</li>
+          <li data-i18n="exp1_b2">Identified and triaged over 1,000 operational issues...</li>
+          <li data-i18n="exp1_b3">Supported day-to-day operations...</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="role" data-i18n="exp2_role">Performance Evaluation Specialist</div>
+        <div class="org" data-i18n="exp2_org">Tamkeen Technologies</div>
+        <div class="dates" data-i18n="exp2_dates">Apr 2024 — Apr 2024</div>
+        <ul class="bullets"><li data-i18n="exp2_b1">Partnered with cross-functional teams...</li></ul>
+      </div>
+
+      <div class="card">
+        <div class="role" data-i18n="exp3_role">Data Analyst — Cooperative Training</div>
+        <div class="org" data-i18n="exp3_org">Takamol Holding</div>
+        <div class="dates" data-i18n="exp3_dates">Jan 2019 — Aug 2019</div>
+        <ul class="bullets">
+          <li data-i18n="exp3_b1">Designed and maintained dashboards...</li>
+          <li data-i18n="exp3_b2">Prepared Excel reports...</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="role" data-i18n="exp4_role">Product Manager — Cooperative Training</div>
+        <div class="org" data-i18n="exp4_org">Takamol Holding</div>
+        <div class="dates" data-i18n="exp4_dates">Jan 2019 — Aug 2019</div>
+        <ul class="bullets">
+          <li data-i18n="exp4_b1">Actively participated in Daily Scrum...</li>
+          <li data-i18n="exp4_b2">Managed product workflows using Agile processes...</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="eyebrow">03</div>
+      <h2 data-i18n="sec_skills">Skills</h2>
+
+      <h3 data-i18n="skills_hard_title">Hard Skills</h3>
+      <div class="pill-row" style="margin-bottom:20px;">
+        <span class="pill" data-i18n="skill_hard1">CRM Systems Management</span>
+        <span class="pill" data-i18n="skill_hard2">Microsoft Office</span>
+        <span class="pill" data-i18n="skill_hard3">Ticketing / Case Management</span>
+        <span class="pill" data-i18n="skill_hard4">Data Entry, Cleaning & Validation</span>
+        <span class="pill" data-i18n="skill_hard5">Workflow Coordination</span>
+      </div>
+
+      <h3 data-i18n="skills_soft_title">Soft Skills</h3>
+      <div class="pill-row">
+        <span class="pill" data-i18n="skill_soft1">Communication</span>
+        <span class="pill" data-i18n="skill_soft2">Problem Solving</span>
+        <span class="pill" data-i18n="skill_soft3">Attention to Detail</span>
+        <span class="pill" data-i18n="skill_soft4">Time Management</span>
+        <span class="pill" data-i18n="skill_soft5">Adaptability</span>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="eyebrow">04</div>
+      <h2 data-i18n="sec_projects">Projects</h2>
+
+      <a class="project-link-card" href="project-zad.html">
+        <img class="project-thumb" src="zad-screenshot.png" alt="Zad project screenshot"
+             onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22250%22><rect width=%22400%22 height=%22250%22 fill=%22%23132943%22/><text x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-family=%22sans-serif%22 font-size=%2222%22 fill=%22%237fd6e8%22>Zad</text></svg>'" />
+        <div class="project-caption">
+          <b data-i18n="proj_zad_name">Zad</b>
+          <span data-i18n="proj_zad_view">View details →</span>
+        </div>
+      </a>
+    </section>
+
+    <section id="education">
+      <div class="eyebrow">05</div>
+      <h2 data-i18n="sec_education">Education</h2>
+      <div class="card">
+        <div class="role" data-i18n="edu_degree">Bachelor's Degree in Information Systems</div>
+        <div class="org" data-i18n="edu_school">Prince Sultan University</div>
+        <div class="dates" data-i18n="edu_year">2019</div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="eyebrow">06</div>
+      <h2 data-i18n="sec_contact">Let's talk</h2>
+      <p data-i18n="contact_text">If you'd like to get in touch about an opportunity...</p>
+      <p>
+        ✉️ <a href="mailto:Maramalbadrani8@gmail.com">Maramalbadrani8@gmail.com</a><br/>
+        📞 <a href="tel:0551170047">0551170047</a><br/>
+        🔗 <a href="https://2u.pw/n22Ko" target="_blank" rel="noopener noreferrer" data-i18n="contact_linkedin">LinkedIn Profile</a>
+      </p>
+    </section>
+  </main>
+
+  <footer class="site-footer" data-i18n="footer">© 2026 Maram Faris Albadrani</footer>
+</div>
+
+<script>
+// ---------- mouse-reactive dark network background ----------
+(function () {
+  const canvas = document.getElementById("bg-network");
+  const ctx = canvas.getContext("2d");
+  let w, h, nodes;
+  const LINK_DIST = 140;
+  const MOUSE_RADIUS = 180;
+  const mouse = { x: -9999, y: -9999 };
+  const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  function resize() {
+    w = canvas.width = window.innerWidth;
+    h = canvas.height = window.innerHeight;
+    const count = Math.max(24, Math.min(90, Math.floor((w * h) / 13000)));
+    nodes = Array.from({ length: count }, () => ({
+      x: Math.random() * w,
+      y: Math.random() * h,
+      vx: (Math.random() - 0.5) * 0.3,
+      vy: (Math.random() - 0.5) * 0.3,
+    }));
+  }
+
+  function step() {
+    ctx.clearRect(0, 0, w, h);
+
+    for (const n of nodes) {
+      if (!reduced) {
+        n.x += n.vx; n.y += n.vy;
+        if (n.x < 0 || n.x > w) n.vx *= -1;
+        if (n.y < 0 || n.y > h) n.vy *= -1;
+      }
+      const dx = n.x - mouse.x, dy = n.y - mouse.y;
+      const d = Math.sqrt(dx * dx + dy * dy);
+      if (d < MOUSE_RADIUS) {
+        const force = (MOUSE_RADIUS - d) / MOUSE_RADIUS;
+        n.x += (dx / d) * force * 1.2;
+        n.y += (dy / d) * force * 1.2;
+      }
+    }
+
+    for (let i = 0; i < nodes.length; i++) {
+      for (let j = i + 1; j < nodes.length; j++) {
+        const a = nodes[i], b = nodes[j];
+        const dx = a.x - b.x, dy = a.y - b.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < LINK_DIST) {
+          ctx.strokeStyle = `rgba(79, 168, 224, ${0.22 * (1 - dist / LINK_DIST)})`;
+          ctx.lineWidth = 1;
+          ctx.beginPath();
+          ctx.moveTo(a.x, a.y);
+          ctx.lineTo(b.x, b.y);
+          ctx.stroke();
+        }
+      }
+    }
+
+    for (const n of nodes) {
+      const dx = n.x - mouse.x, dy = n.y - mouse.y;
+      const d = Math.sqrt(dx * dx + dy * dy);
+      const near = d < MOUSE_RADIUS;
+      ctx.beginPath();
+      ctx.arc(n.x, n.y, near ? 2.6 : 1.8, 0, Math.PI * 2);
+      ctx.fillStyle = near ? "rgba(127, 214, 232, 0.95)" : "rgba(79, 168, 224, 0.65)";
+      ctx.fill();
+    }
+
+    requestAnimationFrame(step);
+  }
+
+  window.addEventListener("resize", resize);
+  window.addEventListener("mousemove", (e) => { mouse.x = e.clientX; mouse.y = e.clientY; });
+  window.addEventListener("mouseleave", () => { mouse.x = -9999; mouse.y = -9999; });
+  window.addEventListener("touchmove", (e) => {
+    if (e.touches[0]) { mouse.x = e.touches[0].clientX; mouse.y = e.touches[0].clientY; }
+  }, { passive: true });
+
+  resize();
+  step();
+})();
+
+// ---------- language toggle ----------
+const translations = {
+  en: {
+    nav_about: "About", nav_experience: "Experience", nav_skills: "Skills",
+    nav_projects: "Projects", nav_education: "Education", nav_contact: "Contact",
+    lang_btn: "العربية",
+    hero_hi: "Hi, I'm Maram Faris Albadrani 👋", hero_contact_btn: "Contact",
+    stat1_num: "1,000+", stat1_label: "Operational issues resolved",
+    stat2_num: "10+", stat2_label: "KPI dashboards maintained",
+    stat3_num: "100%", stat3_label: "Team quality improvement",
+    sec_about: "About",
+    about_text: "I'm an organized, tech-savvy operations professional with a Bachelor's degree in Information Systems and hands-on experience across CRM systems, data handling, Excel reporting, and administrative coordination. I'm seeking an administrative or technical role where I can apply digital and analytical skills to improve how teams operate.",
+    sec_experience: "Experience",
+    exp1_role: "Operational Support Specialist", exp1_org: "Tamkeen Technologies", exp1_dates: "Nov 2023 — Mar 2026",
+    exp1_b1: "Ensured full compliance with approved policies and operating procedures amid frequent updates.",
+    exp1_b2: "Identified and triaged over 1,000 operational issues, routing each to the right department.",
+    exp1_b3: "Supported day-to-day operations to maintain a smooth, efficient workflow.",
+    exp2_role: "Performance Evaluation Specialist", exp2_org: "Tamkeen Technologies", exp2_dates: "Apr 2024 — Apr 2024",
+    exp2_b1: "Partnered with cross-functional teams to raise performance and quality levels by up to 100%.",
+    exp3_role: "Data Analyst — Cooperative Training", exp3_org: "Takamol Holding", exp3_dates: "Jan 2019 — Aug 2019",
+    exp3_b1: "Designed and maintained dashboards tracking more than 10 key performance indicators.",
+    exp3_b2: "Prepared Excel reports to support decision-making across departments.",
+    exp4_role: "Product Manager — Cooperative Training", exp4_org: "Takamol Holding", exp4_dates: "Jan 2019 — Aug 2019",
+    exp4_b1: "Actively participated in Daily Scrum, Sprint Planning, and Sprint Review meetings.",
+    exp4_b2: "Managed product workflows using Agile processes, ensuring efficient sprint execution.",
+    sec_skills: "Skills", skills_hard_title: "Hard Skills",
+    skill_hard1: "CRM Systems Management", skill_hard2: "Microsoft Office", skill_hard3: "Ticketing / Case Management",
+    skill_hard4: "Data Entry, Cleaning & Validation", skill_hard5: "Workflow Coordination",
+    skills_soft_title: "Soft Skills",
+    skill_soft1: "Communication", skill_soft2: "Problem Solving", skill_soft3: "Attention to Detail",
+    skill_soft4: "Time Management", skill_soft5: "Adaptability",
+    sec_projects: "Projects", proj_zad_name: "Zad", proj_zad_view: "View details →",
+    sec_education: "Education", edu_degree: "Bachelor's Degree in Information Systems",
+    edu_school: "Prince Sultan University", edu_year: "2019",
+    sec_contact: "Let's talk",
+    contact_text: "If you'd like to get in touch about an opportunity, reach out using any of the details below.",
+    contact_linkedin: "LinkedIn Profile",
+    footer: "© 2026 Maram Faris Albadrani",
+  },
+  ar: {
+    nav_about: "نبذة", nav_experience: "الخبرة", nav_skills: "المهارات",
+    nav_projects: "المشاريع", nav_education: "التعليم", nav_contact: "تواصل",
+    lang_btn: "English",
+    hero_hi: "مرحباً، أنا مرام فارس البدراني 👋", hero_contact_btn: "تواصل",
+    stat1_num: "+1,000", stat1_label: "مشكلة تشغيلية تم حلها",
+    stat2_num: "+10", stat2_label: "لوحة مؤشرات أداء تمت صيانتها",
+    stat3_num: "100%", stat3_label: "تحسين جودة الفريق",
+    sec_about: "نبذة عني",
+    about_text: "أنا موظفة عمليات منظمة وملمّة بالتقنية، حاصلة على بكالوريوس في نظم المعلومات، ولدي خبرة عملية في أنظمة CRM ومعالجة البيانات وإعداد تقارير Excel والتنسيق الإداري. أبحث عن دور إداري أو تقني أستطيع من خلاله توظيف مهاراتي الرقمية والتحليلية لتحسين طريقة عمل الفرق.",
+    sec_experience: "الخبرة العملية",
+    exp1_role: "أخصائي دعم العمليات", exp1_org: "شركة تمكين للتقنية", exp1_dates: "نوفمبر 2023 — مارس 2026",
+    exp1_b1: "ضمان الالتزام الكامل بالسياسات وإجراءات التشغيل المعتمدة مع التحديثات المتكررة.",
+    exp1_b2: "تحديد وتصنيف أكثر من 1,000 مشكلة تشغيلية وتوجيه كل منها للقسم المختص.",
+    exp1_b3: "دعم العمليات اليومية للحفاظ على سير عمل سلس وفعّال.",
+    exp2_role: "أخصائي تقييم الأداء", exp2_org: "شركة تمكين للتقنية", exp2_dates: "أبريل 2024 — أبريل 2024",
+    exp2_b1: "العمل مع فرق متعددة التخصصات لرفع مستويات الأداء والجودة حتى 100%.",
+    exp3_role: "محلل بيانات — تدريب تعاوني", exp3_org: "مجموعة تكامل القابضة", exp3_dates: "يناير 2019 — أغسطس 2019",
+    exp3_b1: "تصميم وصيانة لوحات معلومات لتتبع أكثر من 10 مؤشرات أداء رئيسية.",
+    exp3_b2: "إعداد تقارير Excel لدعم اتخاذ القرار عبر الأقسام المختلفة.",
+    exp4_role: "مدير منتج — تدريب تعاوني", exp4_org: "مجموعة تكامل القابضة", exp4_dates: "يناير 2019 — أغسطس 2019",
+    exp4_b1: "المشاركة الفعالة في اجتماعات Daily Scrum وتخطيط السبرنت ومراجعته.",
+    exp4_b2: "إدارة سير عمل المنتج باستخدام منهجية Agile لضمان تنفيذ فعّال للسبرنت.",
+    sec_skills: "المهارات", skills_hard_title: "المهارات التقنية",
+    skill_hard1: "إدارة أنظمة CRM", skill_hard2: "مايكروسوفت أوفيس", skill_hard3: "إدارة التذاكر والحالات",
+    skill_hard4: "إدخال البيانات وتنظيفها والتحقق منها", skill_hard5: "تنسيق سير العمل",
+    skills_soft_title: "المهارات الشخصية",
+    skill_soft1: "التواصل", skill_soft2: "حل المشكلات", skill_soft3: "الدقة والانتباه للتفاصيل",
+    skill_soft4: "إدارة الوقت", skill_soft5: "المرونة والتكيّف",
+    sec_projects: "المشاريع", proj_zad_name: "زاد", proj_zad_view: "عرض التفاصيل ←",
+    sec_education: "التعليم", edu_degree: "بكالوريوس نظم المعلومات",
+    edu_school: "جامعة الأمير سلطان", edu_year: "2019",
+    sec_contact: "لنتحدث",
+    contact_text: "إذا كنت تودين التواصل بخصوص فرصة عمل، يمكنك التواصل عبر أي من الوسائل التالية.",
+    contact_linkedin: "الملف الشخصي على لينكدإن",
+    footer: "© 2026 مرام فارس البدراني",
+  },
+};
+
+function applyLanguage(lang) {
+  const dict = translations[lang];
+  document.documentElement.setAttribute("lang", lang);
+  document.documentElement.setAttribute("dir", lang === "ar" ? "rtl" : "ltr");
+  document.querySelectorAll("[data-i18n]").forEach((el) => {
+    const key = el.getAttribute("data-i18n");
+    if (dict[key] !== undefined) el.textContent = dict[key];
+  });
+  localStorage.setItem("site-lang", lang);
+}
+document.addEventListener("DOMContentLoaded", () => {
+  applyLanguage(localStorage.getItem("site-lang") || "en");
+  document.getElementById("lang-toggle").addEventListener("click", () => {
+    const cur = document.documentElement.getAttribute("lang") || "en";
+    applyLanguage(cur === "en" ? "ar" : "en");
+  });
+});
+</script>
+</body>
+</html>
